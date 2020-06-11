@@ -1,0 +1,45 @@
+{% extends 'base.html' %} {% block content %}
+
+<!--Add Recipe section-->
+<div id="recipe-form" class="container">
+
+    <div class="row recipe-space">
+        <div class="col-12">
+            <form action="{{ url_for('insert_recipe')}}" method="POST" class="full-form">
+                <div class="form-group card card-body bg-lightBlue">
+                    <h3 class="recipe-heading unique-font text-center">Create Recipe</h3>
+                    <!--                    URL label and input-->
+                    <label id="urlLabel" class="strong-label">Photo URL</label>
+                    <input id="imageUrl" name="imageUrl" type="text" class="validate form-control"
+                           placeholder="Valid URL: https://worlds-best-chocolate-cake.com/etc">
+                    <!--                    Recipe name label and input-->
+                    <label id="recipeNameLabel" class="strong-label">Recipe Name</label>
+                    <input id="recipe_name" name="recipe_name" type="text" class="validate form-control"
+                           placeholder="Chocolate Cake">
+                    <!--                     Description label and input-->
+                    <label id="descriptionLabel" class="strong-label">Description</label>
+                    <input id="recipe_description" name="recipe_description" type="text" class="validate form-control"
+                           placeholder="World's best Chocolate cake">
+                    <!--                      Portions label and input-->
+                    <label id="portionLabel" class="strong-label">Portions</label>
+                    <input id="recipe_portions" name="recipe_portions" type="text" class="validate form-control"
+                           placeholder="10">
+                    <!--                       Ingredients label and input-->
+                    <label id="ingredientsLabel" class="strong-label">Ingredients</label>
+                    <textarea id="recipe_ingredients" name="recipe_ingredients" class="form-control"
+                              placeholder="Place comma between ingredients: 1 Tsp Sugar, 1L Milk "></textarea>
+                    <!--                       How to label and input-->
+                    <label id="recipeLabel" class="strong-label">Recipe</label>
+                    <textarea id="recipe" name="recipe" aria-label="textarea" class="form-control"></textarea>
+                    <small class="text-space text-muted">All submissions will go through Admin approval before displayed
+                        on the website.
+                    </small>
+                </div>
+                <!--                       Submission button-->
+                <button id="submitForm" type="submit" name="action" class="btn btn-outline-success">Create</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

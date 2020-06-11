@@ -1,0 +1,27 @@
+{% extends 'base.html' %} {% block content %}
+
+
+<!--404 image-->
+<section class="image-container container">
+    <div class="row no-margin">
+        <div class="col-12 no-pad">
+            <div class="card">
+                <img alt="Upset Person on Computer" class="main-image"
+                     src="{{ url_for('static', filename='img/404-confusion.jpg')}}">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!--404 text-->
+<section class="error-text">
+    <div class="row no-margin">
+        <div class="col-12 text-center no-pad">
+            <h1 class="error-header"><span>404</span>Error 500, Server error </h1>
+            <h2 class="error-direction">Please try again later as we are having some server problems </h2>
+
+        </div>
+    </div>
+</section>
+
+{% endblock %}

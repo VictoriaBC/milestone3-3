@@ -1,0 +1,168 @@
+{% extends 'base.html' %} {% block content %}
+<!--    callout image-->
+<section class="image-container container">
+    <div class="row no-margin">
+        <div class="col-12 no-pad">
+            <div class="card">
+                <img alt="Grilled meat, chicken, eggs, potatoes and buns" class="main-image" src="{{ url_for('static', filename='img/homepage_2.jpg')}}">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!--Filter-->
+<section class="container container-padding">
+    <div class="row no-margin">
+        <div class="col-6">
+            <div class="dropdown menu-border">
+                <button class="btn btn-secondary dropdownMenu dropdown-toggle w-100 no-border" type="button" id="dropdownMenuButton"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    {{rated_text}}
+                </button>
+                <div class="dropdown-menu menu-border" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="{{url_for('recipes')}}">Highest Rating</a>
+                    <a class="dropdown-item" href="{{url_for('sort_by_rating')}}">Medium Rating</a>
+                </div>
+            </div>
+            {% if session.user %}
+            <a role="button" class="txt-white bg-blue btn add-recipe fas fa-plus" href="{{url_for('add_recipe')}}">
+                Add Recipe</a>
+        </div>
+        <div class="col-6">
+            <a role="button" class="txt-white bg-blue btn m-add-recipe fas fa-plus" href="{{url_for('add_recipe')}}">
+                Add Recipe</a>
+        </div>
+        {%endif%}
+    </div>
+</section>
+
+<!--Recipe Collection-->
+<section class="recipe-container container container-space">
+    <div class="row">
+        {% for content in recipe_collection%}
+        {% if content.approved == true %}
+        <div class="col-xs-12 col-sm-6 col-md-4 col-xl-4 extra-pad">
+            <div class="card card-size card-box cooking-img">
+                <a href="{{url_for('recipe',recipe_id=content._id)}}" class="link-wrap">
+                    <img alt="The Happy Bun high rated recipe image" class="auto-size" src="{{content.imageUrl}}"></a>
+                <div class="card-body align-content">
+                    <div class="card-text ">
+                        <div class="info-card-wrap">
+                            <p>{{content.name}}</p>
+                            <div class="star-wrap">
+                                {% for star in range(content.totalStarValue) %}
+                                <span class="fas fa-star txt-blue star-box"></span>
+                                {%endfor%}
+                                {% for empty in range(5 - content.totalStarValue)%}
+                                <span class="far fa-star txt-blue star-box"></span>
+                                {%endfor%}
+                                <span class="tV-font txt-blue"> ({{content.totalVotes}})</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+        {% endfor %}
+    </div>
+</section>
+<!--Newest Recipe Showcase-->
+<section class="suggested-recipes container">
+    <div class="row">
+        <div class="col-12">
+            <div class="divider txt-blue">
+                <h2 class="text-center unique-font popular-recipe txt-blue"><span>Newest Recipe</span></h2>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!--Newest and unrated Recipes-->
+{% for content in new_recipe%}
+{% if content.approved == true %}
+<section class="highest-rated container">
+    <div class="row">
+        <div class="col-sm-12 col-md-6 col-xl-6">
+            <div class="card card-box n-rated-card">
+                <a href="{{url_for('recipe',recipe_id=content._id)}}" class="link-wrap">
+                    <img alt="Newest recipe image" class="n-recipe-img" src="{{content.imageUrl}}"></a>
+            </div>
+        </div>
+        <div class="col-sm-12 col-md-6 col-xl-6 text-center">
+            <h3 class="n-recipe-heading">{{content.name}}</h3>
+            <p class="n-description">{{content.description}}</p>
+            <!--                Newest recipe details-->
+            <div class="n-star-wrap">
+                {% for star in range(content.totalStarValue) %}
+                <span class="fas fa-star txt-blue n-star-box"></span>
+                {%endfor%}
+                {% for empty in range(5 - content.totalStarValue)%}
+                <span class="far fa-star txt-blue n-star-box"></span>
+                {%endfor%}
+                <span class="n-tV-font txt-blue"> ({{content.totalVotes}})</span>
+            </div>
+            {%if content.totalVotes == 0%}
+            <P class="n-vote-text txt-blue">Be the first to vote!</P>
+            {%endif%}
+            <p class="n-author text-buffer">Author: {{content.author}}</p>
+            {% if content.lastUpdateDate == 0 %}
+            <p class="n-date text-buffer">Created on: {{content.createDate}}</p>
+            {%endif%}
+            {% if content.lastUpdateDate != 0%}
+            <p class="n-date text-buffer">Updated on: {{content.lastUpdateDate}}</p>
+            {%endif%}
+
+        </div>
+    </div>
+</section>
+{%endif%}
+{%endfor%}
+
+<!--Headline for new and un-raked recipes-->
+<section class="suggested-recipes container">
+    <div class="row">
+        <div class="col-12">
+            <div class="divider txt-blue">
+                <h2 class="text-center unique-font popular-recipe txt-blue"><span>More Recipes</span></h2>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!--New and un-raked recipes-->
+<section class="new-recipe-container container containers-space">
+    <div class="row">
+        {% for content in un_rated_recipes%}
+        {% if content.approved == true and content.name != last_recipe%}
+        <p>{{active_name}}</p>
+        <div class="col-xs-12 col-sm-6 col-md-4 col-xl-4 extra-pad">
+            <div class="card card-size card-box cooking-img">
+                <a href="{{url_for('recipe',recipe_id=content._id)}}" class="link-wrap">
+                    <img alt="The Happy Bun un-rated recipe image" class="auto-size" src="{{content.imageUrl}}"></a>
+                <div class="card-body align-content">
+                    <div class="card-text ">
+                        <div class="info-card-wrap">
+                            <p>{{content.name}}</p>
+                            <div class="star-wrap">
+                                {% for star in range(content.totalStarValue) %}
+                                <span class="fas fa-star txt-blue star-box"></span>
+                                {%endfor%}
+                                {% for empty in range(5 - content.totalStarValue)%}
+                                <span class="far fa-star txt-blue star-box"></span>
+                                {%endfor%}
+                                <span class="tV-font txt-blue"> ({{content.totalVotes}})</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+        {% endfor %}
+    </div>
+</section>
+
+
+{% endblock %}

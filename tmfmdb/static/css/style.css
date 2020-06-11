@@ -1,0 +1,846 @@
+/************ CSS Reset ************/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+}
+
+/************ Global Font ************/
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+.unique-font {
+    font-family: 'Roboto', bold;
+}
+
+.main-content {
+    min-height: calc(100vh - 74px - 90px);
+}
+
+/************ Global Cursor/Button Style ************/
+a:-webkit-any-link {
+    color: -webkit-link;
+    cursor: pointer;
+}
+
+button:-webkit-any-link {
+    color: -webkit-link;
+    cursor: pointer;
+}
+
+a {
+    outline: none;
+}
+/************ Custom Global container ************/
+@media (min-width: 1200px) {
+    .container{
+        max-width: 1200px;
+    }
+}
+
+/************ Global Background Color Scheme ************/
+.bg-white {
+    background-color: #ffffff !important;
+}
+
+.bg-fa {
+    background-color: #fafafa;
+}
+
+.bg-lightBlue {
+    background-color: #f0f8ff !important;
+}
+.bg-blue {
+    background-color: #6499ed !important;
+}
+
+.bg-dark {
+    background-color: #1F271B;
+}
+
+.bg-yellow {
+    background-color: #FFA500;
+}
+
+.bg-red {
+    background-color: #ff0000 !important;
+}
+/************ Global Color Scheme ************/
+.txt-blue {
+    color: #6499ed !important;
+}
+
+.txt-white {
+    color: #ffffff !important;
+}
+
+/************ padding and margin remover ************/
+.no-pad {
+    padding: 0;
+}
+
+.no-margin {
+    margin: 0;
+}
+/************ Flash Text ************/
+.flash-text {
+    font-size: 1.5em;
+}
+
+/************ Navigation Bar ************/
+.navbar-nav {
+    font-size: 1.5em;
+}
+
+.navbar-brand {
+    font-size: 3em;
+}
+.navbar {
+    box-shadow: none !important;
+}
+.navbar-nav > .nav-item > .nav-link {
+    font-size: 1em;
+}
+
+/************ Hero Image ************/
+.main-image {
+    width: 100%;
+    display: block;
+    height: auto;
+
+}
+/************ Card boxes ************/
+.info-card-wrap {
+    display: flex;
+}
+
+.star-wrap {
+    float: right;
+    margin-left: auto;
+}
+/************ Landing Page CSS ************/
+.extra-pad {
+    padding: 1% 1% 1% 1%;
+}
+
+.card-size {
+    float: left;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.auto-size {
+    float: left;
+    height: 310px;
+    width: 100%;
+    background-size: cover;
+}
+
+.add-recipe {
+    display: -webkit-box;
+    margin: 0 0 0 2em;
+    padding: 0.9em 1em 0.9em 1em;
+    float: left;
+}
+
+.icon-size {
+    font-size: 1.5em !important;
+}
+
+.container-padding {
+    padding: 1em 0 1em 0;
+}
+
+.m-recipe-padding {
+    padding: 0 0 1em 0;
+}
+
+.menu-border {
+    float: left;
+    border: 1px solid black;
+}
+.no-border {
+    margin: 0;
+}
+
+.divider {
+    width: 100%;
+    text-align: center;
+    border-bottom: 2px solid #6499ed;
+    line-height: 0.1em;
+    margin: 4em 0 4em 0;
+    z-index: -99;
+}
+
+.popular-recipe span {
+    background: #fafafa;
+    padding:0 10px;
+    font-size: 2.5em;
+}
+
+.n-rated-card {
+    float: left;
+    width: 100%;
+    height: 25em;
+    overflow: hidden;
+}
+
+.n-recipe-img {
+    object-fit: cover;
+    width: 100%;
+    height: 30em;
+}
+
+.n-recipe-heading {
+    font-size: 2.7em;
+}
+.n-description {
+    font-size: 1.5em;
+    line-height: 2em;
+}
+
+.n-star-wrap {
+    margin: 2em 0 2em 0;
+}
+.n-vote-text {
+    font-size: 1.5em;
+}
+
+.n-star-box {
+    padding: 0;
+    border: none;
+    background: none;
+    font-size: 2em !important;
+}
+
+.n-visit-text {
+    font-size: 1.5em;
+    margin: 0.5em 0 0 0;
+}
+
+.n-author {
+    font-size: 1.1em;
+}
+
+.n-date {
+    font-size: 1.1em;
+}
+
+.n-tV-font {
+    font-size: 1.8em;
+}
+
+.auto-size:hover {
+    opacity:0.5;
+    transition: 0.5s;
+}
+
+.n-recipe-img:hover {
+    opacity:0.5;
+    transition: 0.5s;
+}
+/************ Index Mobile Button ************/
+.m-add-recipe {
+    display: -webkit-box;
+    margin-bottom: 0;
+    padding: 0.9em 1em 0.9em 1em;
+    float: right;
+    display: none;
+}
+
+/************ Recipe PAGE CSS ************/
+.recipe-img {
+    object-fit: cover;
+    width: 100%;
+    height: 50em;
+}
+
+.recipe-text {
+    font-size: 1.3em;
+    line-height: 1.5;
+}
+
+.profile-recipe span {
+    font-weight: 600;
+}
+
+
+.text-buffer {
+    padding: 0.5em 0 0 0;
+}
+
+
+.tV-font {
+    font-size: 1.4em;
+}
+
+.star-box {
+    padding: 0;
+    border: none;
+    background: none;
+    font-size: 1.5em !important;
+}
+.recipe-steps {
+    font-size: 1.3em;
+    line-height: 1.5;
+    padding: 0.5em 0 0.5em 0;
+}
+
+.recipe-steps  p {
+    line-height: 1.3;
+    margin-bottom: 1.3em;
+}
+.recipe-name {
+    font-size: 3em;
+    padding: 0.5em 0 0 0;
+
+}
+
+.description-margin {
+    margin: 0 20% 0 20%;
+    font-size: 1.5em;
+}
+
+.buffer-margin {
+    margin: 5% 0 5% 0;
+}
+
+.recipe-h2 {
+    font-size: 1.9em;
+    font-weight: 600;
+}
+.star-wrap-recipe {
+    text-align: center;
+    padding: 1em 0 2em 0;
+}
+
+.ing-buffer {
+    padding: 0 0 0.5em 0;
+}
+
+.ingredient-box {
+    height: 100%;
+}
+
+.portion-size {
+    font-size: 1.4em;
+    padding: 0 0 0.5em 0;
+}
+.portion-number {
+    font-size: 2em;
+    font-weight: 600;
+    padding: 0 0 0.7em 0;
+}
+.card-body {
+    border: 0;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,.14), 0 3px 1px -2px rgba(0,0,0,.2), 0 1px 5px 0 rgba(0,0,0,.12);
+}
+
+.recipe-image {
+    object-fit: cover;
+    width: 100%;
+    height: 30em;
+}
+
+.recipe-text ol li {
+    list-style: none !important;
+    border-bottom: 1px solid #676461;
+}
+.recipe-text p {
+    border-bottom: 1px solid #8395c1 ;
+    margin: 7% 0 7% 0;
+}
+
+
+.update-button {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    position: fixed;
+    bottom: 1em;
+    right: 1.2em;
+    z-index: 1000;
+    padding: 0.8em 0.8em;
+    border-radius: 50px;
+    font-size: 1.6em !important;
+    -webkit-transition: background-color .3s, opacity .3s, visibility .5s;
+    -o-transition: background-color .3s, opacity .3s, visibility .5s;
+    transition: 0.3s;
+}
+
+
+.delete-button {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    position: fixed;
+    bottom: 4em;
+    right: 1.2em;
+    z-index: 1000;
+    padding: 0.8em 0.8em;
+    border-radius: 50px;
+    font-size: 1.6em !important;
+    -webkit-transition: background-color .3s, opacity .3s, visibility .5s;
+    -o-transition: background-color .3s, opacity .3s, visibility .5s;
+    transition: 0.3s;
+}
+
+
+.overlay-star-layer {
+    border: none;
+}
+
+.update-button:hover {
+    background-color: #006400 !important;
+}
+
+.delete-button:hover {
+    background-color: #ffA500 !important;
+}
+
+
+
+.m-update-recipe {
+    border-radius: 50px;
+    font-size: 1.2em;
+    margin-bottom: 0;
+    float: right;
+    padding: 1em 1em 1em 1em;
+    display: none;
+}
+
+.m-delete-recipe {
+    border-radius: 50px;
+    font-size: 1.2em;
+    margin-bottom: 0;
+    float: left;
+    padding: 1em 1em 1em 1em;
+    display: none;
+}
+
+
+/************ Recipe PAGE OVERLAY CSS ************/
+.overlay {
+    position: fixed; /* Sit on top of the page content */
+    display: none; /* Hidden by default */
+    width: 100%; /* Full width (cover the whole page) */
+    height: 100%; /* Full height (cover the whole page) */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.5); /* Black background with opacity */
+    z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
+    cursor: pointer; /* Add a pointer on hover */
+}
+
+.overlay-content{
+    position: absolute;
+    width: 30%;
+    top: 50%;
+    left: 50%;
+    font-size: 1.5em;
+    transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+}
+
+.leave-button {
+    float: right;
+    border: none;
+    font-size: 1.3em !important;
+}
+.star-review-description {
+    padding: 1em 0 0.5em 0;
+
+}
+/************ Create Recipe ************/
+.text-space {
+    margin: 1em 0 0 0;
+}
+
+
+/************ Update Recipe Page ************/
+.recipe-heading {
+    font-size: 3em;
+    padding: 0 0 2% 0;
+}
+
+.strong-label {
+    font-size: 1.3em;
+    font-weight: 600 !important;
+    padding: 2% 0 2% 0;
+}
+
+.recipe-space{
+    padding: 5% 10% 0 10%;
+}
+
+/************ Login and Register************/
+.credential-margin {
+    padding: 20% 25% 0 25%;
+}
+
+.login-heading{
+    font-size: 3em;
+    margin: 0 0 3% 0;
+    text-align: center;
+}
+
+.register-heading {
+    font-size: 3em;
+    margin: 20% 0 5%;
+    text-align: center;
+}
+.register-margin {
+    padding: 0 25% 0 25%;
+}
+
+/************ Admin Portal************/
+.profile-name {
+    font-size: 2.5em;
+    margin: 10% 0 3% 0;
+}
+
+.profile-headings {
+    font-size: 1.5em;
+}
+
+.admin-card {
+    font-weight: 600;
+    font-size: 1.1em;
+    line-height: 1.5;
+}
+
+.user-text span {
+    font-weight: 600;
+}
+
+/************ Footer ************/
+.footer-container {
+    background-color: currentColor;
+    padding: 2% 0 2% 0;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+.recipe-box {
+    padding: 0 0 5% 0;
+}
+/************ 404 page ************/
+.error-header {
+    font-size: 3em;
+    padding: 2em 0 1em 0;
+    }
+
+.error-direction {
+    font-size: 2em;
+}
+
+
+
+
+/************ Media Queries ************/
+@media (max-width: 1200px) {
+    /*Recipe Page*/
+    .auto-size {
+        height: 18em;
+    }
+
+    /*Index Page*/
+    .info-card-wrap {
+        display: unset;
+    }
+    .star-wrap {
+        float: none;
+        padding: 0.5em 0 0 0;
+    }
+    .align-content {
+        text-align: center;
+    }
+
+    .overlay-content {
+        width: 35%;
+    }
+}
+@media (max-width: 1024px) {
+    .auto-size {
+        height: 18em;
+    }
+    /*Recipe Page*/
+    .overlay-content {
+        width: 40%;
+    }
+
+
+
+
+
+}
+
+@media (max-width: 991px) {
+    /*Card Image Information*/
+    .auto-size {
+        height: 13em;
+    }
+    .align-content {
+        text-align: center;
+        padding: 6%;
+    }
+    .info-card-wrap > p {
+        padding: 2%;
+    }
+    .info-card-wrap {
+        display: unset;
+    }
+    .star-wrap {
+        float: unset;
+        margin-left: unset;
+    }
+    /*Recipe Page*/
+    .overlay-content {
+        width: 50%;
+    }
+    .recipe-img {
+        height: 30em;
+    }
+    /*Login page*/
+    .credential-margin {
+        padding: 25% 15% 0 15%;
+    }
+    /*Registration page*/
+    .register-margin {
+        padding: 0 15% 0 15%;
+    }
+    /*Create Recipe*/
+    .recipe-space{
+        padding: 5% 5% 0 5%;
+    }
+    .recipe-heading {
+        font-size: 2em;
+    }
+}
+
+@media (max-width: 767px) {
+    /*Main Image*/
+    .image-container {
+        padding: 0;
+    }
+    /*Card Image Information*/
+
+    .star-box {
+        font-size: 1.2em !important;
+    }
+
+    .cooking-img > .card-body {
+        box-shadow: unset;
+        padding: 8% 0 6% 0;
+    }
+    .info-card-wrap > p {
+        font-size: 1.3em;
+    }
+    /*Newest Recipe*/
+    .n-recipe-heading{
+        font-size: 2em;
+        margin: 1% 0 0 0;
+    }
+    .n-star-wrap {
+        margin: 0.5em 0 0.5em 0;
+    }
+    .n-description {
+        display: none;
+    }
+    .n-date {
+        display: none;
+    }
+    .n-vote-text {
+        display: none;
+    }
+    .n-star-box {
+        font-size: 1.3em !important;
+    }
+    .n-tV-font {
+        font-size: 1.3em;
+    }
+    /*Recipe Page*/
+    .recipe-img {
+        height: 25em;
+    }
+    .recipe-h2 {
+        padding-top: 2em;
+        text-align: center;
+    }
+    .recipe-steps {
+        text-align: center;
+    }
+    .recipe-steps ol li {
+        list-style: none !important;
+    }
+    .overlay-content {
+        width: 60%;
+    }
+    /*Login Page*/
+    .credential-margin {
+        padding: 30% 10% 0 10%;
+    }
+    /*Registration page*/
+    .register-heading {
+        font-size: 2.5em;
+    }
+    .register-margin {
+        padding: 0 5% 0 5%;
+    }
+    /*Profile page*/
+    .profile-recipe {
+        padding-top: 3%;
+    }
+    /*Create Recipe*/
+    .recipe-space{
+        padding: 5% 0 0 0;
+    }
+    /*404 error page*/
+    .error-header {
+        font-size: 2.1em;
+
+    }
+    .error-direction {
+        font-size: 1.6em;
+    }
+    .add-recipe {
+        display: none;
+    }
+    .m-add-recipe {
+        display: unset;
+    }
+
+
+
+
+}
+
+
+@media (max-width: 575px) {
+    /*footer Placement calculation*/
+    .main-content {
+        min-height: calc(100vh - 59px - 90px);
+    }
+    /*Index page*/
+    .auto-size {
+        height: 13em;
+        width: 50%;
+        background-size: cover;
+    }
+    .recipe-container > .row > .extra-pad > .card {
+        display: unset !important;
+    }
+    .new-recipe-container > .row > .extra-pad > .card {
+        display: unset !important;
+    }
+    /*Recipe Page*/
+    .recipe-img {
+        height: 20em;
+    }
+    .navbar-brand {
+        font-size: 1.7em;
+    }
+    .recipe-name {
+        font-size: 1.9em;
+    }
+    .recipe-h2 {
+        font-size: 1.9em;
+    }
+    .overlay-content {
+        width: 90%;
+    }
+    .m-delete-recipe {
+        display: unset;
+    }
+    .m-update-recipe {
+        display: unset;
+    }
+
+    /*Login Page*/
+    .credential-margin {
+        padding: 20% 5% 0 5%;
+    }
+    /*Create Recipe*/
+    .recipe-heading {
+        font-size: 1.8em;
+    }
+    /*Add Recipe Button*/
+    .update-button {
+        display: none;
+    }
+    .delete-button {
+        display: none;
+    }
+    .m-add-recipe {
+        display: unset;
+    }
+
+    /*404 error page*/
+    .error-header {
+        font-size: 1.8em;
+
+    }
+    .error-direction {
+        font-size: 1.4em;
+    }
+    .recipe-image {
+        max-width: 100%;
+        height: auto;
+    }
+
+}
+
+@media (max-width: 360px) {
+    /*Recipe index page*/
+    .n-rated-card {
+        height: 20em;
+    }
+    .auto-size {
+        height: 10em;
+    }
+    .n-recipe-img {
+        height: 20em;
+    }
+    .popular-recipe span {
+        font-size: 2em;
+    }
+    .dropdownMenu {
+        font-size: 0.8em ;
+    }
+    .m-add-recipe {
+        font-size: 0.8em;
+    }
+
+    /*profile page*/
+    .main-content {
+        min-height: calc(100vh - 60px - 88px);
+    }
+    .recipe-image {
+        max-width: 100%;
+        height: auto;
+    }
+    /*Overlay text size*/
+    .star-review-description {
+        font-size: 0.8em;
+    }
+}

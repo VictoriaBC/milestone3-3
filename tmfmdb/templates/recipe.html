@@ -1,0 +1,137 @@
+{% extends 'base.html' %} {% block content %}
+
+<!--Generated Image from MongoDB-->
+<section class="images bg-lightBlue">
+    <div class="image-container container">
+        <div class="row no-margin">
+            <div class="col-12 no-pad">
+                <div class="card card-full-size card-box">
+                    <img alt="Recipe description image" class="recipe-img img-fluid" src="{{recipe_data.imageUrl}}">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!--Recipe details-->
+<section class="food-headline description container">
+    <div class="row">
+        <div class="col-12">
+            <h1 class="recipe-name unique-font text-center">{{recipe_data.name}}</h1>
+            {% for ingredient in recipe_data %}
+            {{ingredient.name}}
+            {% endfor %}
+            <div class="star-wrap-recipe">
+                <button id="enable-overlay" class="overlay-star-layer bg-fa">
+                    {% for star in range(recipe_data.totalStarValue) %}
+                    <span class="fas fa-star txt-blue star-box"></span>
+                    {%endfor%}
+                    {% for empty in range(5 - recipe_data.totalStarValue)%}
+                    <span class="far fa-star txt-blue star-box"></span>
+                    {%endfor%}
+                </button>
+                <span class="tV-font txt-blue"> ({{recipe_data.totalVotes}})</span>
+            </div>
+            <!--            If user is not author and logged in they can vote-->
+            {% if session.user != recipe_data.author and session.user %}
+            <div id="overlay-user" class="overlay">
+                <div id="find-overlay" class="card-body overlay-content bg-fa">
+                    <button id="disable-user-overlay" class="fas fa-times leave-button bg-fa txt-blue"></button>
+                    <form method="POST" action="{{ url_for('insert_rating', recipe_id=recipe_data._id)}}">
+                        <div class="star-wrap-recipe">
+                            <p class="star-review-description">Please leave a star review</p>
+                            <div id="star-box">
+                                {% for star in range(1, 6) %}
+                                <button type="submit" id="starRating_{{star}}" name="submit_rating"
+                                        value="starRating-{{star}}" aria-label="rating-button"
+                                        class="far fa-star txt-blue star-box"></button>
+                                {%endfor%}
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            {%endif%}
+            <!--            Check if user is author before allowing to vote-->
+            {% if session.user == recipe_data.author %}
+            <div id="overlay-author" class="overlay">
+                <div class="card-body overlay-content bg-fa">
+                    <button id="disable-author-overlay" class="fas fa-times leave-button bg-fa txt-blue"></button>
+                    <div class="star-wrap-recipe">
+                        <p class="star-review-description">You can't rate your own submission.</p>
+                    </div>
+                </div>
+            </div>
+            {%endif%}
+            <!--            Check if the user is not logged in-->
+            {% if not session.user %}
+            <div id="overlay-logged-out" class="overlay">
+                <div class="card-body overlay-content bg-fa">
+                    <button id="disable-logged-out-overlay" class="fas fa-times leave-button bg-fa txt-blue"></button>
+                    <div class="star-wrap-recipe">
+                        <p class="star-review-description">You need to login to rate <a href="{{url_for('login')}}">Login here</a></p>
+                        <p class="star-review-description">Not registered? <a href="{{url_for('register')}}">Register here</a></p>
+                    </div>
+                </div>
+            </div>
+            {%endif%}
+            <!--            Shows star rating-->
+            <div class="text-center">
+                <p class="description-margin">{{recipe_data.description}}</p>
+                <p class="text-buffer">Author: {{recipe_data.author}}</p>
+                {% if recipe_data.lastUpdateDate == 0 %}
+                <p class="text-buffer">Created on: {{recipe_data.createDate}}</p>
+                {%endif%}
+                {% if recipe_data.lastUpdateDate != 0%}
+                <p class="text-buffer">Updated on: {{recipe_data.lastUpdateDate}}</p>
+                {%endif%}
+            </div>
+            <hr class="buffer-margin">
+        </div>
+    </div>
+    <!--Checks user if permission found-->
+    {% if session.user == recipe_data.author or session.user == "Administrator" %}
+    <div class="row no-margin m-recipe-padding">
+        <div class="col-6">
+            <a role="button" class="txt-white bg-blue m-update-recipe btn fas fa-pen"
+               href="{{url_for('edit_recipe', recipe_id=recipe_data._id)}}">
+            </a>
+        </div>
+        <div class="col-6">
+            <a role="button" class="txt-white bg-red btn m-delete-recipe fas fa-trash"
+               href="{{url_for('delete_recipe', recipe_id=recipe_data._id)}}">
+            </a>
+        </div>
+    </div>
+    {% endif %}
+    <!--    Recipe box-->
+    <div class="row recipe-box">
+        <div class="col-sm-12 col-md-5 col-xl-5 ingredient-box text-center card-body bg-lightBlue">
+            <h2 class="recipe-h2 ing-buffer">Ingredients</h2>
+            <h3 class="portion-size">Number of portions</h3>
+            <h3 class="portion-number">{{recipe_data.portions}}</h3>
+            <div class="card-text recipe-text">
+                {{recipe_data.ingredients|safe}}
+
+            </div>
+        </div>
+        <!--        Recipe to do steps-->
+        <div class="col-sm-12 col-md-5 offset-md-2 col-xl-5 offset-xl-2">
+            <h2 class="recipe-h2">This is how you do it</h2>
+            <div class="recipe-steps">
+                {{recipe_data.recipe|safe}}
+            </div>
+        </div>
+    </div>
+</section>
+<!--Checks if user in session or admin in session-->
+{% if session.user == recipe_data.author or session.user == "Administrator" %}
+<a class="delete-button bg-red txt-white btn btn-outline-dark fas fa-trash"
+   href="{{url_for('delete_recipe', recipe_id=recipe_data._id)}}" role="button"></a>
+<a class="update-button bg-blue txt-white btn btn-outline-dark fas fa-pen"
+   href="{{url_for('edit_recipe', recipe_id=recipe_data._id)}}"
+   role="button" id="update"></a>
+{% endif %}
+
+
+{% endblock %}

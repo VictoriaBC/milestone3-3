@@ -1,0 +1,51 @@
+{% extends 'base.html' %} {% block content %}
+
+<!--Update Recipe form-->
+<section id="recipe-form" class="update-recipe container">
+    <div class="row recipe-space">
+        <div class="col-12">
+            <form action="{{ url_for('update_recipe', recipe_id=recipe_data._id)}}" method="POST" class="full-form">
+
+                <div class="form-group card card-body bg-lightBlue">
+                    <h3 class="recipe-heading unique-font text-center">Update {{recipe_data.name}} Recipe</h3>
+                    <!--                    URL label and input-->
+                    <label id="urlLabel" class="strong-label"> Image URL</label>
+                    <input id="imageUrl" name="imageUrl" type="text" class="validate form-control"
+                           placeholder="https://worlds-best-chocolate-cake.com/etc"
+                           value="{{recipe_data.imageUrl}}">
+                    <!--                    Recipe name label and input-->
+                    <label id="recipeNameLabel" class="strong-label">Recipe Name</label>
+                    <input id="recipe_name" name="recipe_name" type="text" class="validate form-control"
+                           value="{{recipe_data.name}}">
+                    <!--                     Description label and input-->
+                    <label id="descriptionLabel" class="strong-label">Description</label>
+                    <input id="recipe_description" name="recipe_description" type="text" class="validate form-control"
+                           placeholder="World's best Chocolate cake"
+                           value="{{recipe_data.description}}">
+                    <!--                      Portions label and input-->
+                    <label id="portionLabel" class="strong-label">Portions</label>
+                    <input id="recipe_portions" name="recipe_portions" type="text" class="validate form-control"
+                           placeholder="10"
+                           value="{{recipe_data.portions}}">
+                    <!--                       Ingredients label and input-->
+                     <label id="ingredientsLabel" class="strong-label">Ingredients</label>
+                    <textarea id="recipe_ingredients" name="recipe_ingredients" class="form-control"
+                              placeholder="Place comma between ingredients: 1 Tsp Sugar, 1L Milk ">{{recipe_data.ingredients}}</textarea>
+                        <!--                   Recipe label and input-->
+                    <label id="recipeLabel" class="strong-label">Recipe</label>
+                    <textarea id="recipe" name="recipe" aria-label="textarea" class="form-control">
+                    {{recipe_data.recipe}}
+                    </textarea>
+                    <small class="text-space text-muted">All submissions will go through Admin approval before displayed
+                        on the website.
+                    </small>
+                </div>
+                <!--                       Submission button-->
+                <button id="submitForm" type="submit" name="action" class="btn btn-outline-success">Update</button>
+            </form>
+        </div>
+    </div>
+</section>
+
+
+{% endblock %}

@@ -1,0 +1,96 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://unpkg.com/bootstrap-material-design@4.1.1/dist/css/bootstrap-material-design.min.css" integrity="sha384-wXznGJNEXNG1NFsbm0ugrLFMQPWswR3lds2VeinahP8N0zJw9VWSopbjv2x7WCvX" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" integrity="sha256-h20CPZ0QyXlBuAw7A+KluUYx/3pK+c7lYEpqLTlxjYQ=" crossorigin="anonymous" />
+    <link href="https://fonts.googleapis.com/css?family=Love+Ya+Like+A+Sister&family=Roboto|&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
+    <link rel="icon" href="{{url_for('static', filename='img/favicon.png')}}">
+
+
+<title>Easy Dinner</title>
+</head>
+<body>
+<!--    Navigation bar-->
+<div class="section navigation-bar container">
+    <div class="row">
+        <div class="col-12">
+            <nav class="navbar navbar-expand-lg  navbar-light">
+                <a class="navbar-brand unique-font" href="{{url_for('recipes')}}">Easy Dinner</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ml-auto">
+                        {% if session.user %}
+                        <!--                        Logout Button displayed if user is logged in-->
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{url_for('logout')}}">Logout</a>
+                        </li>
+                        {%endif%}
+                        <!--                        profile button displays if user is logged in and is not administrator-->
+                        {% if session.user and session.user != "Administrator" %}
+                        <li class="nav-item">
+                            <a class="nav-link h" href="{{url_for('profile')}}">{{session.user}}</a>
+                        </li>
+                        {% endif %}
+                        <!--                        display login If user is nog logged in-->
+                        {% if not session.user %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{url_for('login')}}">Login</a>
+                        </li>
+                        <!--                        Register is displayed if user is nog logged in-->
+                        <li class="nav-item">
+                            <a class="nav-link  {% if 'register' in request.path %} active {% endif %}"
+                               href="{{url_for('register')}}">Register</a>
+                        </li>
+                        {% endif %}
+                        <!--                        Administrator portal displayed if administrator is logged in-->
+                        {% if session.user == "Administrator" %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{url_for('admin_portal')}}">Admin Portal</a>
+
+                        </li>
+                        {% endif %}
+
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </div>
+</div>
+
+<div class="main-content">
+    {% block content %}
+    {% endblock %}
+</div>
+
+<!--Footer content on all pages-->
+<section class="footer">
+    <div class="container-fluid no-pad text-center">
+        <div class="col-12 no-pad">
+            <div class="card-body footer-style bg-dark">
+                <h5 class="card-title txt-white">&copy; Easy Dinner</h5>
+                <p class="card-text txt-white">Victoria Ben</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!--All scripts on the page-->
+<script src="https://unpkg.com/popper.js@1.12.6/dist/umd/popper.js" integrity="sha384-fA23ZRQ3G/J53mElWqVJEGJzU0sTs+SvzG8fXVWP+kJQ1lwFAOkcUOysnlKJC33U" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/bootstrap-material-design@4.1.1/dist/js/bootstrap-material-design.js" integrity="sha384-CauSuKpEqAFajSpkdjv3z9t8E7RlpJ1UP0lKM/+NdtSarroVKu069AlsRPKkFBz9" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ckeditor/4.12.1/ckeditor.js" integrity="sha256-TED/E3SGPvEvuKbvWC781am0/paerbpwFulbWXPBPds=" crossorigin="anonymous"></script>
+<script src="{{url_for('static', filename='js/home.js')}}"></script>
+<script src="{{url_for('static', filename='js/registration.js')}}"></script>
+<script src="{{url_for('static', filename='js/createRecipe.js')}}"></script>
+
+</body>
+</html>
